@@ -1,0 +1,453 @@
+// app global css in SCSS form
+.border-secondary {
+  border: 1px solid $secondary !important;
+  border-radius: 5px;
+}
+.border-blue {
+  border: 2px solid $info;
+  border-radius: 30px;
+}
+.border-input-field {
+  border: 1px solid $ghost !important;
+  border-radius: 8px;
+}
+.q-field--error {
+  border: 1px solid $errorColor !important;
+}
+.border-radius-50 {
+  border-radius: 50%;
+}
+.border-radius-lg {
+  border-radius: 20px;
+}
+.border-radius-md {
+  border-radius: 10px;
+}
+.border-bottom-secondary {
+  border-bottom: 1px solid $secondary;
+}
+.border-columbia {
+  border: 1px solid $columbiaBlue;
+}
+.border-bottom-columbia {
+  border-bottom: 1px solid $columbiaBlue;
+}
+.border-smalt {
+  border: 2px solid $smalt;
+  border-radius: 5px;
+}
+.box-shadow {
+  box-shadow: 0px 0px 2px $grey;
+}
+.border-primary {
+  border: 1px solid $primary;
+}
+.bg-lightGrey {
+  background: $lightGrey;
+}
+.text-lightGrey {
+  color: $lightGrey;
+}
+.bg-aliceBlue {
+  background: $aliceBlue;
+}
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+.width-75 {
+  width: 75%;
+}
+.bg-whiteSmoke {
+  background: $whiteSmoke;
+}
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+.responsive-heading {
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 80px;
+  @media only screen and (max-width: $breakpoint-sm-max) {
+    font-size: 42px;
+    line-height: 48px;
+  }
+  @media only screen and (max-width: $breakpoint-xs-max) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+.responsive-subheading {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+}
+.bold-text {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  @media only screen and (max-width: $breakpoint-xs-max) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.text-whiteSmoke {
+  color: $whiteSmoke;
+}
+.text-charcoal {
+  color: $charcoal;
+}
+.text-manatee {
+  color: $manatee;
+}
+.text-dimGrey {
+  color: $dimGrey;
+}
+.text-nightRider {
+  color: $nightRider;
+}
+.text-smalt {
+  color: $smalt;
+}
+.text-errorColor {
+  color: $errorColor;
+}
+.text-regalBlue {
+  color: $regalBlue;
+}
+.text-comet {
+  color: $comet;
+}
+.text-manateeGrey {
+  color: $manateeGrey;
+}
+.text-shuttleGrey {
+  color: $shuttleGrey;
+}
+.text-darkTangerine {
+  color: $darkTangerine;
+}
+.text-selectiveYellow {
+  color: $selectiveYellow;
+}
+.text-solitude {
+  color: $solitude;
+}
+.text-shamrockGreen {
+  color: $shamrockGreen;
+}
+.text-lynch {
+  color: $lynch;
+}
+.text-tangaroa {
+  color: $tangaroa;
+}
+.bg-lavenderBlue {
+  background: $lavenderBlue;
+}
+.bg-solitude {
+  background: $solitude;
+}
+.bg-froly {
+  background: $froly;
+}
+.bg-lime {
+  background: $lime;
+}
+.bg-smalt {
+  background: $smalt;
+}
+.bg-regalBlue {
+  background: $regalBlue;
+}
+.bg-solitudeBlue {
+  background: $solitudeBlue;
+}
+.bg-gainsBoro {
+  background: $gainsBoro;
+}
+.bg-shamrockGreen {
+  background: $shamrockGreen;
+}
+.bg-lavenderBlue1 {
+  background: $lavenderBlue1;
+}
+.bg-kashmirBlue {
+  background: $kashmirBlue;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.q-media__controls {
+  background: transparent !important;
+}
+.no-more-results-msg {
+  width: 70%;
+  margin: 10px auto;
+  text-align: center;
+  line-height: 0em;
+}
+.on-highlight {
+  background: #f2ecff !important;
+}
+.primary-btn-style {
+  border-radius: 10px;
+  height: 58px;
+}
+.remove-underline {
+  text-decoration: none;
+}
+.delete-icon {
+  content: url('../assets/delete.svg');
+  margin: 0px 8px;
+}
+.word-break-break-word {
+  word-break: break-word;
+}
+// ************** CSS for 3rd Party items ****************************
+.country-selector__input {
+  height: 56px !important;
+}
+.input-tel__input {
+  height: 56px !important;
+}
+.country-selector__toggle {
+  margin-top: 10px !important;
+}
+.country-selector__country-flag {
+  margin-top: 7px !important;
+}
+.vue-phone-number-input .select-country-container {
+  min-width: 103px !important;
+  max-width: 103px !important;
+}
+.f-w-600 {
+  font-weight: 600;
+}
+.f-w-500 {
+  font-weight: 500;
+}
+.f-w-400 {
+  font-weight: 400;
+}
+.text-letter-space {
+  letter-spacing: 0.75px;
+}
+
+.f-w-700 {
+  font-weight: 700;
+}
+
+.explore-screen-headings {
+  font-size: 32px;
+  line-height: 36px;
+  @media only screen and (max-width: $breakpoint-md-max) {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  @media only screen and (max-width: $breakpoint-sm-max) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  @media only screen and (max-width: $breakpoint-xs-max) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.text-fs-32 {
+  font-size: 32px;
+}
+.text-fs-16 {
+  font-size: 16px;
+}
+.text-lh-12 {
+  line-height: 12px;
+}
+.text-lh-36 {
+  line-height: 36px;
+}
+.text-lh-28 {
+  line-height: 28px;
+}
+.text-lh-24 {
+  line-height: 24px;
+}
+.text-fs-14-lh-20 {
+  font-size: 14px;
+  line-height: 20px;
+}
+.text-fs-14-lh-24-fw-400 {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.text-fs-20-lh-28 {
+  font-size: 20px;
+  line-height: 28px;
+}
+.text-fs-24-lh-28 {
+  font-size: 24px;
+  line-height: 28px;
+}
+.text-fs-24-lh-32 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.q-field {
+  transition: border 0.5s;
+  caret-color: $primary !important;
+  &:focus,
+  &:active,
+  &:hover {
+    border: 1px solid $primary !important;
+    box-shadow: 0 0 5px $primary;
+    transition: box-shadow 0.2s;
+  }
+}
+.q-field--error,
+.q-field--error:focus,
+.q-field--error:active,
+.q-field--error:hover {
+  border: 1px solid $errorColor !important;
+  transition: border 0.5s;
+  box-shadow: 0 0 5px $errorColor;
+  transition: box-shadow 0.2s;
+  caret-color: $errorColor !important;
+}
+.q-btn .arrow {
+  transition: transform 0.3s;
+}
+.q-btn:hover .arrow {
+  transition: transform 0.3s ease-out;
+  transform: translateX(10px);
+}
+
+.b-dropdown {
+  .q-item {
+    padding-left: 0;
+  }
+  &:active .q-focus-helper,
+  &:focus .q-focus-helper,
+  &:hover .q-focus-helper {
+    background: transparent !important;
+  }
+  .material-icons {
+    color: $primary;
+  }
+}
+.menu-box-shadow {
+  box-shadow: 0px 10px 20px $shadow;
+}
+.payment-fail-toast {
+  .q-notification__message {
+    font-size: 16px !important;
+  }
+  .q-notification__caption {
+    font-size: 14px !important;
+    opacity: 0.9;
+    word-break: break-word;
+  }
+}
+.ellipsis-4-lines {
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ellipsis-5-lines {
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ellipsis-6-lines {
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ellipsis-7-lines {
+  -webkit-line-clamp: 7;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ellipsis-8-lines {
+  -webkit-line-clamp: 8;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.q-dialog__backdrop {
+  background: #152141;
+  opacity: 0.7;
+}
+// for settings page select drop-down popup
+body.platform-android:not(.native-mobile)
+  .q-dialog__inner--top
+  .q-select__dialog {
+  max-height: 100vh !important;
+}
+body.platform-ios:not(.native-mobile) .q-dialog__inner--top .q-select__dialog {
+  max-height: 100vh !important;
+}
+
+//for animating elements
+.reveal {
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    &.fade-bottom {
+      animation: fade-bottom 1s ease-in;
+    }
+    &.fade-left {
+      animation: fade-left 1s ease-in;
+    }
+    &.fade-right {
+      animation: fade-right 1s ease-in;
+    }
+  }
+}
+
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+//for whole page container
+.q-page-container {
+  margin: 0 auto;
+  max-width: 120rem;
+}

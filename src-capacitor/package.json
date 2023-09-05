@@ -1,0 +1,14 @@
+{
+  "name": "blooprinted-ui",
+  "version": "1.0.3",
+  "description": "Your audience is begging to follow in your footsteps. blooprinted makes it easy to show them how it's done—beyond just an online course!",
+  "author": "Blooprinted <team@blooprinted.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "2.4.7",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0",
+    "@capacitor/ios": "2.4.7",
+    "capacitor-firebase-auth": "^2.4.0"
+  }
+}

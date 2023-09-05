@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "436161854944",
+    "project_id": "blooprinted-345de",
+    "storage_bucket": "blooprinted-345de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436161854944:android:c8bdc930586872f35b7f85",
+        "android_client_info": {
+          "package_name": "com.blooprinted.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436161854944-ucntllhcmg77ud9ug5it5id6lfgnd4gt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blooprinted.app",
+            "certificate_hash": "ac761ce38d3afd6e8dbfd331235e0b5c15d21351"
+          }
+        },
+        {
+          "client_id": "436161854944-udgv1tv0vbsdl00ti66bq04v663vnts4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blooprinted.app",
+            "certificate_hash": "0f5a097236dc5ed9b79096a11ad22ed20e7c6d4f"
+          }
+        },
+        {
+          "client_id": "436161854944-mluniuh9luh376sfg3jtkopdh7j7a0aj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0LoE2Axjr53r0T8hTeeHwYhMqWShM8ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436161854944-mluniuh9luh376sfg3jtkopdh7j7a0aj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "436161854944-c4t5fet5nt5d39mvvshq79vonunpo23k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.blooprinted.mobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

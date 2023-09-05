@@ -1,0 +1,144 @@
+workflows:
+  blooprinted-android-workflow:
+    name: blooprinted Android Workflow
+    max_build_duration: 120
+    instance_type: mac_mini
+    environment:
+      groups:
+        - android
+        - blooprinted-env
+      vars:
+        KEYSTORE_PATH: /tmp/.keystore
+      node: 12.22.1
+    triggering:
+      events:
+        - pull_request
+      cancel_previous_builds: true
+    scripts:
+      - &setup_env_vars
+        name: Setup environment variables
+        script: |
+          cat > $FCI_BUILD_DIR/.env <<EOF
+          BLOOPRINTED_ENV_API_URL='$BLOOPRINTED_ENV_API_URL'
+          BLOOPRINTED_ENV_API_KEY="$BLOOPRINTED_ENV_API_KEY"
+          BLOOPRINTED_ENV_AUTH_DOMAIN="$BLOOPRINTED_ENV_AUTH_DOMAIN"
+          BLOOPRINTED_ENV_PROJECT_ID="$BLOOPRINTED_ENV_PROJECT_ID"
+          BLOOPRINTED_ENV_STORAGE_BUCKET="$BLOOPRINTED_ENV_STORAGE_BUCKET"
+          BLOOPRINTED_ENV_MESSAGING_SENDER_ID="$BLOOPRINTED_ENV_MESSAGING_SENDER_ID"
+          BLOOPRINTED_ENV_APP_ID="$BLOOPRINTED_ENV_APP_ID"
+          BLOOPRINTED_ENV_STRIPE_PUBLISHABLE_KEY="$BLOOPRINTED_ENV_STRIPE_PUBLISHABLE_KEY"
+          EOF
+      - &install_node_modules
+        name: Install dependencies and quasar cli
+        script: |
+          yarn
+          yarn global add @quasar/cli
+      - &copy_web_assets
+        name: Build and Copy web assets to native project
+        script: |
+          quasar build -m capacitor -T android --skip-pkg
+          cd src-capacitor && npx cap sync
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/src-capacitor/android/local.properties"
+      - name: Set up debug key.properties
+        script: |
+          keytool -genkeypair \
+            -alias androiddebugkey \
+            -keypass android \
+            -keystore ~/.android/debug.keystore \
+            -storepass android \
+            -dname 'CN=Android Debug,O=Android,C=US' \
+            -keyalg 'RSA' \
+            -keysize 2048 \
+            -validity 10000
+      - name: Setup keystore
+        script: |
+          echo $KEYSTORE | base64 --decode > $KEYSTORE_PATH
+          cat > $FCI_BUILD_DIR/src-capacitor/android/key.properties <<EOF
+          storePassword=$KEYSTORE_PASSWORD
+          keyPassword=$KEY_PASSWORD
+          keyAlias=$KEY_ALIAS
+          storeFile=$KEYSTORE_PATH
+          EOF
+      - name: Build Android release
+        script: |
+          cd $FCI_BUILD_DIR/src-capacitor/android
+          cp ../build.gradle app/build.gradle
+          ./gradlew bundleRelease
+    artifacts:
+      - $FCI_BUILD_DIR/src-capacitor/android/app/build/**/outputs/**/*.aab
+    publishing:
+      google_play:
+       credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+       track: internal
+      email:
+        recipients:
+          - abhay.yadav@cilalabs.com
+          - akash@cilalabs.com
+          - sai.dinesh@cilalabs.com
+          - varun.gurjar@cilalabs.com
+          - jay.kate@cilalabs.com
+        notify:
+          success: true
+          failure: true
+
+  blooprinted-ios-workflow:
+    name: blooprinted iOS Workflow
+    max_build_duration: 120
+    instance_type: mac_mini
+    environment:
+      groups:
+        - blooprinted-env
+      vars:
+        # Ionic Xcode worskspace and scheme
+        XCODE_WORKSPACE: 'src-capacitor/ios/App/App.xcworkspace'
+        XCODE_SCHEME: 'App'
+      node: 12.22.1
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - tag
+      cancel_previous_builds: true
+    scripts:
+      - *setup_env_vars
+      - *install_node_modules
+      - *copy_web_assets
+      - name: Build and Copy web assets to ios project
+        script: |
+          quasar build -m capacitor -T ios --skip-pkg
+          cd src-capacitor && npx cap sync
+      - name: Cocoapods installation
+        script: |
+          cd $FCI_BUILD_DIR/src-capacitor/ios/App && pod install
+      - name: Set up keychain to be used for codesigning
+        script: |
+          keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files com.blooprinted.mobile --type IOS_APP_STORE --create
+      - name: Add certificates to keychain
+        script: |
+          keychain add-certificates
+      - name: Increment build number
+        script: |
+          #!/bin/sh
+          set -e
+          set -x
+          cd $FCI_BUILD_DIR/src-capacitor/ios/App
+          agvtool new-version -all $(($BUILD_NUMBER +1))
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: |
+          xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
